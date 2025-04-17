@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Categories.css';
-
-const BASE_URL = import.meta.env.VITE_API_URL;
 
 const CategoriesForm = () => {
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState('');
   const [editCategoryId, setEditCategoryId] = useState(null);
   const [editCategoryName, setEditCategoryName] = useState('');
+  const navigate = useNavigate();
 
-  // Fetch categories from the backend
+  const BASE_URL = import.meta.env.VITE_API_URL;
+
+  const token = localStorage.getItem('token');
+
+  // Redirect to login if not logged in
+  useEffect(() => {
+    if (!token) {
+      navigate('/');
+    } else {
+      fetchCategories();
+    }
+  }, []);
+
+  // Fetch categories from backend
   const fetchCategories = async () => {
-    const token = localStorage.getItem('token');
-
     try {
       const response = await axios.get(`${BASE_URL}/api/categories`, {
         headers: {
@@ -22,19 +33,13 @@ const CategoriesForm = () => {
       });
       setCategories(response.data);
     } catch (error) {
-      console.error('Error fetching categories', error);
+      console.error('Error fetching categories:', error);
     }
   };
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  // Handle add category
+  // Add category
   const handleAddCategory = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
-
     try {
       const response = await axios.post(
         `${BASE_URL}/api/categories`,
@@ -48,15 +53,13 @@ const CategoriesForm = () => {
       setCategories([...categories, response.data]);
       setNewCategory('');
     } catch (error) {
-      console.error('Error adding category', error);
+      console.error('Error adding category:', error);
     }
   };
 
-  // Handle update category
+  // Update category
   const handleUpdateCategory = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
-
     try {
       const response = await axios.put(
         `${BASE_URL}/api/categories/${editCategoryId}`,
@@ -75,14 +78,12 @@ const CategoriesForm = () => {
       setEditCategoryId(null);
       setEditCategoryName('');
     } catch (error) {
-      console.error('Error updating category', error);
+      console.error('Error updating category:', error);
     }
   };
 
-  // Handle delete category
+  // Delete category
   const handleDeleteCategory = async (id) => {
-    const token = localStorage.getItem('token');
-
     try {
       await axios.delete(`${BASE_URL}/api/categories/${id}`, {
         headers: {
@@ -91,7 +92,7 @@ const CategoriesForm = () => {
       });
       setCategories(categories.filter((category) => category.id !== id));
     } catch (error) {
-      console.error('Error deleting category', error);
+      console.error('Error deleting category:', error);
     }
   };
 
