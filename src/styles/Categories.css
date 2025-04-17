@@ -1,0 +1,59 @@
+.categories-form {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .categories-form h2 {
+    text-align: center;
+  }
+  
+  .categories-form form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .categories-form form input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .categories-form form button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .categories-form button {
+    padding: 6px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .categories-form ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .categories-form li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .categories-form li button {
+    margin-left: 10px;
+  }
+  
