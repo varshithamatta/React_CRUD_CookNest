@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 
@@ -8,8 +8,14 @@ const LoginPage = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Access API base URL from .env
   const BASE_URL = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/admin'); // Already logged in
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,7 +34,7 @@ const LoginPage = () => {
 
       const data = await response.json();
 
-      if (data.success) {
+      if (data.success && data.token) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('chefId', data.chef?.id);
         navigate('/admin');
