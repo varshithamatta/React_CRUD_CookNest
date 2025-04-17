@@ -8,6 +8,9 @@ const LoginPage = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Access API base URL from .env
+  const BASE_URL = import.meta.env.VITE_API_URL;
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -17,10 +20,10 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await fetch('https://recipefinderbackend-production-990e.up.railway.app/api/auth/chef/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/chef/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }), // Changed from username to email
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
