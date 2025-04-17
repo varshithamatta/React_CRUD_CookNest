@@ -1,59 +1,78 @@
 .categories-form {
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .categories-form h2 {
-    text-align: center;
-  }
-  
-  .categories-form form {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .categories-form form input {
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .categories-form form button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .categories-form button {
-    padding: 6px 12px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .categories-form ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .categories-form li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-  }
-  
-  .categories-form li button {
-    margin-left: 10px;
-  }
-  
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.categories-form h2 {
+  text-align: center;
+  color: #333;  /* Darker color for the heading */
+}
+
+.categories-form form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.categories-form form input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;  /* Dark text for inputs */
+  background-color: #fff;  /* White background for inputs */
+}
+
+.categories-form form button {
+  padding: 10px 15px;
+  background-color: #4CAF50; /* Green button for submit */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.categories-form button:hover {
+  background-color: #45a049;  /* Darker green on hover */
+}
+
+.categories-form button:active {
+  background-color: #388e3c;  /* Even darker green when clicked */
+}
+
+.categories-form ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.categories-form li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #555;  /* Slightly lighter gray text for list items */
+}
+
+.categories-form li button {
+  padding: 6px 12px;
+  background-color: #f44336; /* Red button for actions like delete */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.categories-form li button:hover {
+  background-color: #e53935;  /* Darker red on hover */
+}
+
+.categories-form li button:active {
+  background-color: #d32f2f;  /* Even darker red when clicked */
+}
